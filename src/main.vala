@@ -4,16 +4,6 @@ public class Troll {
 	private string color = "\033[30m";
 	private string default_color = "\033[0m";
 
-	public Troll () {
-		Posix.termios term;
-		Posix.tcgetattr (0, out term);
-		term.c_lflag &= ~Posix.ECHO;
-		Posix.tcsetattr (0, Posix.TCSANOW, term);
-		Process.signal (INT, () => {});
-		Process.signal (QUIT, () => {});
-		Process.signal (TSTP, () => {});
-	}
-
 	private void change_color () {
 		if (color_nbr >= 37)
 			color_nbr = 30;
@@ -41,6 +31,13 @@ public class Troll {
 }
 
 void	main() {
+	Posix.termios term;
+	Posix.tcgetattr (0, out term);
+	term.c_lflag &= ~Posix.ECHO;
+	Posix.tcsetattr (0, Posix.TCSANOW, term);
+	Process.signal (INT, () => {});
+	Process.signal (QUIT, () => {});
+	Process.signal (TSTP, () => {});
 	var troll = new Troll ();
 	troll.loop ();
 }
