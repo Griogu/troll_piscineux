@@ -34,6 +34,10 @@ public class Troll {
 }
 
 void	main() {
+	Posix.termios term;
+    Posix.tcgetattr (0, out term);
+    term.c_lflag &= ~Posix.ECHO;
+    Posix.tcsetattr (0, Posix.TCSANOW, term);
 	var troll = new Troll ();
 	troll.loop ();
 }
