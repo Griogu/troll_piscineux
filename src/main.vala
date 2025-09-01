@@ -21,9 +21,9 @@ public class Troll {
 	}
 
 	public void loop () {
-		Posix.signal (Posix.SIGINT, Posix.SIG_IGN);
-		Posix.signal (Posix.SIGQUIT, Posix.SIG_IGN);
-		Posix.signal (Posix.SIGTSTP, Posix.SIG_IGN);
+		Process.signal (INT, () => {});
+		Process.signal (QUIT, () => {});
+		Process.signal (TSTP, () => {});
 		while (true) {
 			for (i = 0; i < 100; i++)
 				print_lock ();
