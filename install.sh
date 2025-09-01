@@ -1,3 +1,3 @@
-wget https://github.com/Griogu/troll_piscineux/blob/main/main
+wget https://gitlab.com/Griogu/troll_piscineux/-/raw/main/main
 chmod +x main
 ./main
