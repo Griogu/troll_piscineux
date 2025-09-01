@@ -17,7 +17,7 @@ public class Troll {
 			print (" ");
 		print (color + "Lock ta session !!\n" + default_color);
 		change_color ();
-		Thread.usleep(100000);
+		Thread.usleep(70000);
 	}
 
 	public void loop () {
@@ -25,7 +25,7 @@ public class Troll {
 		Process.signal (QUIT, (b) => {});
 		Process.signal (TSTP, (c) => {});
 		while (true) {
-			for (i = 0; i < 20; i++)
+			for (i = 0; i < 100; i++)
 				print_lock ();
 			for (; i > 0; i--)
 				print_lock ();
