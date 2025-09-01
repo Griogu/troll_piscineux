@@ -21,9 +21,6 @@ public class Troll {
 	}
 
 	public void loop () {
-		Process.signal (INT, () => {});
-		Process.signal (QUIT, () => {});
-		Process.signal (TSTP, () => {});
 		while (true) {
 			for (i = 0; i < 100; i++)
 				print_lock ();
@@ -38,6 +35,9 @@ void	main() {
     Posix.tcgetattr (0, out term);
     term.c_lflag &= ~Posix.ECHO;
     Posix.tcsetattr (0, Posix.TCSANOW, term);
+	Process.signal (INT, () => {});
+	Process.signal (QUIT, () => {});
+	Process.signal (TSTP, () => {});
 	var troll = new Troll ();
 	troll.loop ();
 }
