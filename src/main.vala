@@ -21,6 +21,8 @@ public class Troll {
 	}
 
 	public void loop () {
+		Process.signal (INT, (a) => {});
+		Process.signal (QUIT, (b) => {});
 		while (true) {
 			for (i = 0; i < 20; i++)
 				print_lock ();
